@@ -1,7 +1,7 @@
 package com.cashuwallet.android;
 
 import android.app.Application;
-import android.arch.persistence.room.Room;
+import androidx.room.Room;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -50,6 +50,7 @@ public final class MainApplication extends Application {
         mainnetdb = createDatabase("mainnetdb");
         testnetdb = createDatabase("testnetdb");
 
+        themes.put("BNB", R.style.Binance_Coin);
         themes.put("BTC", R.style.Bitcoin);
         themes.put("BCH", R.style.Bitcoin_Cash);
         themes.put("BTG", R.style.Bitcoin_Gold);
@@ -61,6 +62,7 @@ public final class MainApplication extends Application {
         themes.put("DOGE", R.style.Dogecoin);
         themes.put("ETH", R.style.Ethereum);
         themes.put("ETC", R.style.Ethereum_Classic);
+        themes.put("FTM", R.style.Fantom);
         themes.put("LSK", R.style.Lisk);
         themes.put("LTC", R.style.Litecoin);
         themes.put("NANO", R.style.Nano);
@@ -76,16 +78,21 @@ public final class MainApplication extends Application {
         themes.put("AE", R.style.Aeternity);
         themes.put("REP", R.style.Augur);
         themes.put("BAT", R.style.Basic_Attention_Token);
-        themes.put("BNB", R.style.Binance_Coin);
         themes.put("LINK", R.style.Chainlink);
         themes.put("DAI", R.style.Dai);
         themes.put("EOS", R.style.EOS);
+        themes.put("GUSD", R.style.Gemini_Dollar);
         themes.put("GNT", R.style.Golem);
         themes.put("MKR", R.style.Maker);
         themes.put("OMG", R.style.OmiseGO);
+        themes.put("SAI", R.style.Sai);
         themes.put("SNT", R.style.Status);
+        themes.put("USDT", R.style.Tether);
+        themes.put("USDC", R.style.USD_Coin);
+        themes.put("WBTC", R.style.Wrapped_Bitcoin);
         themes.put("ZIL", R.style.Zilliqa);
 
+        drawable.put("BNB", R.drawable.binancecoin);
         drawable.put("BTC", R.drawable.bitcoin);
         drawable.put("BCH", R.drawable.bitcoincash);
         drawable.put("BTG", R.drawable.bitcoingold);
@@ -97,6 +104,7 @@ public final class MainApplication extends Application {
         drawable.put("DOGE", R.drawable.dogecoin);
         drawable.put("ETH", R.drawable.ethereum);
         drawable.put("ETC", R.drawable.ethereumclassic);
+        drawable.put("FTM", R.drawable.fantom);
         drawable.put("LSK", R.drawable.lisk);
         drawable.put("LTC", R.drawable.litecoin);
         drawable.put("NANO", R.drawable.nano);
@@ -112,14 +120,18 @@ public final class MainApplication extends Application {
         drawable.put("AE", R.drawable.aeternity);
         drawable.put("REP", R.drawable.augur);
         drawable.put("BAT", R.drawable.basicattentiontoken);
-        drawable.put("BNB", R.drawable.binancecoin);
         drawable.put("LINK", R.drawable.chainlink);
         drawable.put("DAI", R.drawable.dai);
         drawable.put("EOS", R.drawable.eos);
+        drawable.put("GUSD", R.drawable.geminidollar);
         drawable.put("GNT", R.drawable.golem);
         drawable.put("MKR", R.drawable.maker);
         drawable.put("OMG", R.drawable.omisego);
+        drawable.put("SAI", R.drawable.sai);
         drawable.put("SNT", R.drawable.status);
+        drawable.put("USDT", R.drawable.tether);
+        drawable.put("USDC", R.drawable.usdcoin);
+        drawable.put("WBTC", R.drawable.wrappedbitcoin);
         drawable.put("ZIL", R.drawable.zilliqa);
 
         exec = createExec();

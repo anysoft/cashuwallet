@@ -8,21 +8,21 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
@@ -256,13 +256,14 @@ public class MainActivity extends AppCompatActivity
         private void updateViewHolder(ViewHolder vh, Multiwallet multiwallet) {
             Coin coin = multiwallet.getCoin();
 
-            int res = MainApplication.app().findDrawable(multiwallet.coin);
+            int res = MainApplication.app().findDrawable(coin.getCode());
 
             int color = multiwallet.confirmed ? Color.TRANSPARENT : Color.parseColor("#f7b500");
 
             if (refreshing.contains(multiwallet)) color = Color.LTGRAY;
 
             String tag = "";
+            if (coin instanceof Coins.BEP20Token) tag = "BEP-20";
             if (coin instanceof Coins.ERC20Token) tag = "ERC-20";
             if (coin instanceof Coins.WavesToken) tag = "Waves";
 

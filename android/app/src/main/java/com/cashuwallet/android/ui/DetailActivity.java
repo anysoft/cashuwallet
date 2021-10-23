@@ -6,16 +6,16 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorInt;
-import android.support.design.widget.TabLayout;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.drawable.DrawableCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.ColorInt;
+import com.google.android.material.tabs.TabLayout;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -63,7 +63,7 @@ public class DetailActivity extends AppCompatActivity {
 
         Coin coin = multiwallet.getCoin();
 
-        int theme_res = MainApplication.app().findTheme(multiwallet.coin);
+        int theme_res = MainApplication.app().findTheme(coin.getCode());
         setTheme(theme_res);
 
         setContentView(R.layout.activity_detail);
@@ -131,7 +131,7 @@ public class DetailActivity extends AppCompatActivity {
         });
         viewPager.setCurrentItem(2);
 
-        int res = MainApplication.app().findDrawable(multiwallet.coin);
+        int res = MainApplication.app().findDrawable(coin.getCode());
         ImageView imageView = findViewById(R.id.icon);
         imageView.setImageResource(res);
         Bitmap bitmap = getBitmap(res);

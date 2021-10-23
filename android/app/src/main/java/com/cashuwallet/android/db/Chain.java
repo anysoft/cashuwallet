@@ -1,10 +1,10 @@
 package com.cashuwallet.android.db;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Index;
-import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
+import androidx.annotation.NonNull;
 
 import com.cashuwallet.android.crypto.Coin;
 import com.cashuwallet.android.crypto.Coins;
@@ -14,7 +14,7 @@ import java.math.BigInteger;
 @Entity(
     tableName = "chain",
     indices = {
-        @Index(value = {"coin"}, unique = true),
+        @Index(value = {"label"}, unique = true),
     }
 )
 public class Chain {
@@ -22,8 +22,8 @@ public class Chain {
     @PrimaryKey(autoGenerate = true)
     protected int id;
 
-    @ColumnInfo(name = "coin") @NonNull
-    public final String coin;
+    @ColumnInfo(name = "label") @NonNull
+    public final String label;
 
     @ColumnInfo(name = "height") @NonNull
     protected long height = 0;
@@ -43,8 +43,8 @@ public class Chain {
     @ColumnInfo(name = "fee_last_sync") @NonNull
     public int feeLastSync = 0;
 
-    public Chain(String coin) {
-        this.coin = coin;
+    public Chain(String label) {
+        this.label = label;
     }
 
     public int id() {
@@ -52,7 +52,7 @@ public class Chain {
     }
 
     public Coin getCoin() {
-        return Coins.findCoin(coin);
+        return Coins.findCoin(label);
     }
 
     public long getHeight() {
